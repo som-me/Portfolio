@@ -2,7 +2,7 @@ import Testimonials from "./components/Testimonials";
 import Landing_page from "./components/Landing_page";
 import Minterest from "./components/Minterest";
 import EditorialLayout from "./components/EditorialLayout";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
