@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+::selection{
+  background-color: red;
+  color: black;
+}
+
+body {
+    background: #ffffff;
+    font-family: 'Satoshi', sans-serif;
+    overflow-x: hidden;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('fonts/Satoshi-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
