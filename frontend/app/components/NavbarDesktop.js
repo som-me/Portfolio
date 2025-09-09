@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
+import GoType from "./GoType";
+import FloatingCTA from "./FloatingCTA";
+
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -79,8 +82,9 @@ function Navbar() {
               <div className="text-sm text-gray-500">View</div>
 
               {activeMenuSection === "Home" ? (
+                //Hey chat you need to insert your code here..
                 <div className="flex flex-col gap-4 w-full">
-                  
+                  <FloatingCTA />
                 </div>
               ) : (
                 <div className="text-2xl font-semibold text-gray-700 mt-4">
