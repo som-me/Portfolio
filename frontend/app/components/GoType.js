@@ -158,22 +158,24 @@ export default function GoType() {
     }, [userInput, textToType, gameStarted]);
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-200 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-[#0E0E10] p-4">
             <Script src="https://cdn.tailwindcss.com" />
-            <div className="bg-black text-white p-6 sm:p-8 rounded-3xl shadow-lg w-full max-w-4xl">
+            <div className="bg-[#1C1C1F] text-white p-8 rounded-3xl shadow-2xl w-full max-w-3xl border border-[#2A2D34]">
+
                 {/* Title */}
-                <h2 className="text-2xl font-bold text-center mb-6">
-                    Test Your Typing Skill..
+                <h2 className="text-3xl font-extrabold text-center mb-8 tracking-wide">
+                    Test Your Typing Skill
                 </h2>
 
                 {/* Timer buttons */}
-                <div className="flex justify-center gap-3 mb-4">
+                <div className="flex justify-center gap-4 mb-6">
                     {['30s', '1m', '2m'].map((t) => (
                         <button
                             key={t}
-                            className={`px-4 py-1 rounded-full text-sm font-semibold ${timeSelected === t
-                                    ? 'bg-red-600 text-white'
-                                    : 'bg-gray-700 text-white'
+                            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 
+                                ${timeSelected === t
+                                    ? 'bg-[#E53935] text-white shadow-lg shadow-red-500/20 scale-105'
+                                    : 'bg-[#2A2D34] text-gray-300 hover:bg-[#353841]'
                                 }`}
                             onClick={() => handleTimeSelection(t)}
                         >
@@ -183,16 +185,16 @@ export default function GoType() {
                 </div>
 
                 {/* Time Remaining */}
-                <div className="text-center mb-2">
+                <div className="text-center mb-3 text-gray-300">
                     Time Remaining:{' '}
-                    <span className="text-red-500">{timeLeft}s</span>
+                    <span className="text-[#E53935] font-semibold">{timeLeft}s</span>
                 </div>
 
                 {/* Progress Bar */}
-                <div className="w-full h-1 bg-gray-700 rounded-full mb-5">
+                <div className="w-full h-1.5 bg-[#2A2D34] rounded-full mb-6 overflow-hidden">
                     <div
                         ref={progressRef}
-                        className="h-1 bg-red-500 rounded-full"
+                        className="h-1.5 bg-[#E53935] transition-all duration-200 rounded-full"
                         style={{ width: '0%' }}
                     ></div>
                 </div>
@@ -200,9 +202,9 @@ export default function GoType() {
                 {/* Text Display */}
                 <div
                     ref={textDisplayRef}
-                    className="bg-black border border-gray-700 p-4 rounded-lg mb-4 text-lg h-32 overflow-y-auto"
+                    className="bg-[#101113] border border-[#2A2D34] p-5 rounded-xl mb-5 text-base leading-relaxed text-gray-200 h-32 overflow-y-auto"
                 >
-                    <span className="text-gray-400">
+                    <span className="text-gray-500">
                         Select a time to begin the game.
                     </span>
                 </div>
@@ -210,7 +212,7 @@ export default function GoType() {
                 {/* Typing Area */}
                 <textarea
                     ref={typingAreaRef}
-                    className="w-full h-24 p-3 rounded-lg bg-black border border-gray-700 text-white placeholder-gray-500 resize-none mb-5 focus:outline-none"
+                    className="w-full h-24 p-4 rounded-xl bg-[#101113] border border-[#2A2D34] text-gray-100 placeholder-gray-500 resize-none mb-6 focus:outline-none focus:border-[#E53935] focus:ring-1 focus:ring-[#E53935]"
                     placeholder="Start typing here.."
                     disabled
                     value={userInput}
@@ -219,33 +221,32 @@ export default function GoType() {
 
                 {/* Stats */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                    <div className="bg-white text-black p-4 rounded-lg text-center">
-                        <h3 className="font-semibold">WPM</h3>
-                        <p className="text-red-600 font-bold text-xl">{wpm}</p>
+                    <div className="bg-[#18191B] border border-[#2A2D34] text-center p-4 rounded-xl">
+                        <h3 className="text-gray-400 text-sm">WPM</h3>
+                        <p className="text-[#E53935] font-bold text-2xl">{wpm}</p>
                     </div>
-                    <div className="bg-white text-black p-4 rounded-lg text-center">
-                        <h3 className="font-semibold">Accuracy</h3>
-                        <p className="text-red-600 font-bold text-xl">{accuracy}%</p>
+                    <div className="bg-[#18191B] border border-[#2A2D34] text-center p-4 rounded-xl">
+                        <h3 className="text-gray-400 text-sm">Accuracy</h3>
+                        <p className="text-[#E53935] font-bold text-2xl">{accuracy}%</p>
                     </div>
-                    <div className="bg-white text-black p-4 rounded-lg text-center">
-                        <h3 className="font-semibold">Mistakes</h3>
-                        <p className="text-red-600 font-bold text-xl">{mistakes}</p>
+                    <div className="bg-[#18191B] border border-[#2A2D34] text-center p-4 rounded-xl">
+                        <h3 className="text-gray-400 text-sm">Mistakes</h3>
+                        <p className="text-[#E53935] font-bold text-2xl">{mistakes}</p>
                     </div>
                 </div>
 
                 {/* Final Result */}
                 {finalResult && (
-                    <div className="text-center font-bold mb-4">
+                    <div className="text-center font-semibold mb-5 text-gray-300">
                         Time&apos;s up! Your final speed is{' '}
-                        <span className="text-red-500">{finalResult}</span> WPM.
+                        <span className="text-[#E53935]">{finalResult}</span> WPM.
                     </div>
                 )}
 
                 {/* Start Button */}
                 <div className="flex justify-center">
                     <button
-                        className={`flex items-center gap-2 px-6 py-2 bg-red-600 text-white font-semibold rounded-full ${!timeSelected ? 'opacity-50 cursor-not-allowed' : ''
-                            }`}
+                        className={`flex items-center gap-2 px-8 py-3 rounded-full bg-[#E53935] text-white font-semibold shadow-md hover:shadow-red-500/30 transition-all duration-200 ${!timeSelected ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}`}
                         onClick={startGame}
                         disabled={!timeSelected}
                     >
@@ -253,9 +254,11 @@ export default function GoType() {
                     </button>
                 </div>
             </div>
+        
 
-            {/* Cursor Blink */}
-            <style jsx>{`
+
+            {/* Cursor Blink */ }
+    <style jsx>{`
         .cursor-blink {
           display: inline-block;
           width: 2px;
@@ -271,6 +274,6 @@ export default function GoType() {
           }
         }
       `}</style>
-        </div>
+        </div >
     );
 }
